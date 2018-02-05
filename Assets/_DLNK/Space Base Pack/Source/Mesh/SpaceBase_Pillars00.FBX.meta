@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: f30232f6cb6a56443a036e1b70c997df
+timeCreated: 1492530560
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BasePillar00
+    100002: BasePillar01
+    100004: BasePillar01_lod0
+    100006: BasePillar01_lod002
+    100008: BasePillar01_lod1
+    100010: BasePillar_lod0
+    100012: BasePillar_lod002
+    100014: BasePillar_lod1
+    100016: //RootNode
+    100018: PillarColumn00
+    100020: PillarColumn00_lod00
+    100022: PillarColumn00_lod001
+    100024: PillarColumn00_lod002
+    100026: PillarColumnBase00
+    100028: PillarColumnBase_lod00
+    100030: PillarColumnBase_lod001
+    100032: PillarColumnBase_lod002
+    100034: PillarColumnSuppBlade_lod00
+    100036: PillarColumnSuppBlade_lod001
+    100038: PillarColumnSuppBlade_lod002
+    100040: PillarColumnSupport00
+    100042: PillarColumnSupport00_lod00
+    100044: PillarColumnSupport00_lod001
+    100046: PillarColumnSupport00_lod002
+    400000: BasePillar00
+    400002: BasePillar01
+    400004: BasePillar01_lod0
+    400006: BasePillar01_lod002
+    400008: BasePillar01_lod1
+    400010: BasePillar_lod0
+    400012: BasePillar_lod002
+    400014: BasePillar_lod1
+    400016: //RootNode
+    400018: PillarColumn00
+    400020: PillarColumn00_lod00
+    400022: PillarColumn00_lod001
+    400024: PillarColumn00_lod002
+    400026: PillarColumnBase00
+    400028: PillarColumnBase_lod00
+    400030: PillarColumnBase_lod001
+    400032: PillarColumnBase_lod002
+    400034: PillarColumnSuppBlade_lod00
+    400036: PillarColumnSuppBlade_lod001
+    400038: PillarColumnSuppBlade_lod002
+    400040: PillarColumnSupport00
+    400042: PillarColumnSupport00_lod00
+    400044: PillarColumnSupport00_lod001
+    400046: PillarColumnSupport00_lod002
+    2300000: BasePillar01_lod0
+    2300002: BasePillar01_lod002
+    2300004: BasePillar01_lod1
+    2300006: BasePillar_lod0
+    2300008: BasePillar_lod002
+    2300010: BasePillar_lod1
+    2300012: PillarColumn00_lod00
+    2300014: PillarColumn00_lod001
+    2300016: PillarColumn00_lod002
+    2300018: PillarColumnBase_lod00
+    2300020: PillarColumnBase_lod001
+    2300022: PillarColumnBase_lod002
+    2300024: PillarColumnSuppBlade_lod00
+    2300026: PillarColumnSuppBlade_lod001
+    2300028: PillarColumnSuppBlade_lod002
+    2300030: PillarColumnSupport00_lod00
+    2300032: PillarColumnSupport00_lod001
+    2300034: PillarColumnSupport00_lod002
+    3300000: BasePillar01_lod0
+    3300002: BasePillar01_lod002
+    3300004: BasePillar01_lod1
+    3300006: BasePillar_lod0
+    3300008: BasePillar_lod002
+    3300010: BasePillar_lod1
+    3300012: PillarColumn00_lod00
+    3300014: PillarColumn00_lod001
+    3300016: PillarColumn00_lod002
+    3300018: PillarColumnBase_lod00
+    3300020: PillarColumnBase_lod001
+    3300022: PillarColumnBase_lod002
+    3300024: PillarColumnSuppBlade_lod00
+    3300026: PillarColumnSuppBlade_lod001
+    3300028: PillarColumnSuppBlade_lod002
+    3300030: PillarColumnSupport00_lod00
+    3300032: PillarColumnSupport00_lod001
+    3300034: PillarColumnSupport00_lod002
+    4300000: BasePillar_lod1
+    4300002: BasePillar_lod0
+    4300004: BasePillar_lod002
+    4300006: BasePillar01_lod0
+    4300008: BasePillar01_lod1
+    4300010: BasePillar01_lod002
+    4300012: PillarColumnBase_lod00
+    4300014: PillarColumnBase_lod001
+    4300016: PillarColumnBase_lod002
+    4300018: PillarColumn00_lod00
+    4300020: PillarColumn00_lod001
+    4300022: PillarColumn00_lod002
+    4300024: PillarColumnSupport00_lod00
+    4300026: PillarColumnSuppBlade_lod00
+    4300028: PillarColumnSupport00_lod001
+    4300030: PillarColumnSuppBlade_lod001
+    4300032: PillarColumnSupport00_lod002
+    4300034: PillarColumnSuppBlade_lod002
+    6400000: BasePillar01_lod0
+    6400002: BasePillar01_lod002
+    6400004: BasePillar01_lod1
+    6400006: BasePillar_lod0
+    6400008: BasePillar_lod002
+    6400010: BasePillar_lod1
+    6400012: PillarColumn00_lod00
+    6400014: PillarColumn00_lod001
+    6400016: PillarColumn00_lod002
+    6400018: PillarColumnBase_lod00
+    6400020: PillarColumnBase_lod001
+    6400022: PillarColumnBase_lod002
+    6400024: PillarColumnSuppBlade_lod00
+    6400026: PillarColumnSuppBlade_lod001
+    6400028: PillarColumnSuppBlade_lod002
+    6400030: PillarColumnSupport00_lod00
+    6400032: PillarColumnSupport00_lod001
+    6400034: PillarColumnSupport00_lod002
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.2
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
