@@ -28,7 +28,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 		{
 			if(!Input.GetMouseButton(0))
 			{
-				EnergyConsole.singleton.isCreatingLink = false;
+				EnergyConsole.instance.isCreatingLink = false;
 				if (!desiredLinkComplete) 
 				{
 					ReinitializeTrail ();
@@ -71,8 +71,8 @@ public class EnergyLinkProcess : MonoBehaviour {
 	{
 		StartNewLinkCreation ();
 		isBeingDrag = true;
-		EnergyConsole.singleton.EnergyLP = this;
-		EnergyConsole.singleton.isCreatingLink = true;
+		EnergyConsole.instance.EnergyLP = this;
+		EnergyConsole.instance.isCreatingLink = true;
 		TrailObj.GetComponent<TrailRenderer> ().enabled = true;
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
@@ -90,7 +90,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 
 			//si le joueur lache
 			if (!Input.GetMouseButton (0)) {
-				EnergyConsole.singleton.isCreatingLink = false;
+				EnergyConsole.instance.isCreatingLink = false;
 				if (!desiredLinkComplete) {
 					relaysLine.positionCount = 1;
 					ReinitializeTrail ();
@@ -149,11 +149,11 @@ public class EnergyLinkProcess : MonoBehaviour {
 		switch (consoleType) {
 
 		case EnergySlotBehaviour.ConsoleName.navigation:
-			EnergyConsole.singleton.NavSlot.ChangeRegenRate (currentLinkPower);
+			EnergyConsole.instance.NavSlot.ChangeRegenRate (currentLinkPower);
 			break;
 
 		case EnergySlotBehaviour.ConsoleName.pilot:
-			EnergyConsole.singleton.PilotSlot.ChangeRegenRate (currentLinkPower);
+			EnergyConsole.instance.PilotSlot.ChangeRegenRate (currentLinkPower);
 			break;
 
 		default:
@@ -168,7 +168,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 	{
 		ReinitializeTrail ();
 		isBeingDrag = false;
-		EnergyConsole.singleton.isCreatingLink = false;
+		EnergyConsole.instance.isCreatingLink = false;
 		desiredLinkComplete = true;
 		AddANewPoint (endPos);
 		foreach (EnergyRelayPoint item in relays) 
@@ -183,11 +183,11 @@ public class EnergyLinkProcess : MonoBehaviour {
 		switch (consoleType) {
 
 		case EnergySlotBehaviour.ConsoleName.navigation:
-			EnergyConsole.singleton.NavSlot.ChangeRegenRate (currentLinkPower);
+			EnergyConsole.instance.NavSlot.ChangeRegenRate (currentLinkPower);
 			break;
 		
 		case EnergySlotBehaviour.ConsoleName.pilot:
-			EnergyConsole.singleton.PilotSlot.ChangeRegenRate (currentLinkPower);
+			EnergyConsole.instance.PilotSlot.ChangeRegenRate (currentLinkPower);
 			break;
 
 		default:

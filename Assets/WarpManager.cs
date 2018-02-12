@@ -31,7 +31,7 @@ public class WarpManager : MonoBehaviour {
 
 	public void ClearTheConsoles()
 	{
-		NavigationConsole.navC.ReinitializeConsole ();
+		NavigationConsole.instance.ReinitializeConsole ();
 	}
 
 	public void PlayWarpParticleEffect(float timer)

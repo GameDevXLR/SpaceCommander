@@ -6,7 +6,7 @@ using cakeslice;
 
 public class NavigationConsole : MonoBehaviour {
 
-	public static NavigationConsole navC;
+	public static NavigationConsole instance;
 
 	public bool moduleActive = true;
 	public bool isScanning;
@@ -15,6 +15,8 @@ public class NavigationConsole : MonoBehaviour {
 	public GameObject UIAnchorObj;
 
 	bool alreadyOpened;
+	bool isScalingUp;
+
 	public int maxEnergy;
 	public int currentEnergy;
 	public int energyRegen =1;
@@ -40,9 +42,9 @@ public class NavigationConsole : MonoBehaviour {
 
 	void Awake()
 	{
-		if (navC == null) 
+		if (instance == null) 
 		{
-			navC = this;
+			instance = this;
 		}
 	}
 	void Start()
@@ -133,30 +135,36 @@ public class NavigationConsole : MonoBehaviour {
 		if (show) {
 			StartCoroutine (ShowProcedure());
 		} else {
+
 			StartCoroutine (HideProcedure());
 		}
 	}
 
 	IEnumerator ShowProcedure()
 	{
+		StopCoroutine ("HideProcedure");
+		isScalingUp = true;
 		Transform tr = UIAnchorObj.transform;
 		Vector3 dif = new Vector3 (.05f, .05f, .05f);
-		while (tr.localScale.x<1f) 
+		while (tr.localScale.x<=1f) 
 		{
 			tr.localScale += dif;
-			yield return new WaitForSeconds (.05f);
+			yield return new WaitForSeconds (.08f);
 			
 		}
+		isScalingUp = false;
 	}
 	IEnumerator HideProcedure()
 	{
-		Transform tr = UIAnchorObj.transform;
-		Vector3 dif = new Vector3 (.05f, .05f, .05f);
-		while (tr.localScale.x>.1f) 
-		{
-			tr.localScale -= dif;
-			yield return new WaitForSeconds (.05f);
+		StopCoroutine ("ShowProcedure");
+		if (!isScalingUp) {
+			Transform tr = UIAnchorObj.transform;
+			Vector3 dif = new Vector3 (.05f, .05f, .05f);
+			while (tr.localScale.x > .1f) {
+				tr.localScale -= dif;
+				yield return new WaitForSeconds (.05f);
 
+			}
 		}
 	}
 	//

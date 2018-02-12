@@ -5,10 +5,13 @@ using UnityEngine.UI;
 using cakeslice;
 public class PilotConsole : MonoBehaviour {
 	
-	public static PilotConsole pilotC;
+	public static PilotConsole instance;
 	public JumpInfoHolder jumpInfos;
+
+	public ShipRefuelInStarPath shipPath;
 	public bool moduleActive = true;
 	public bool isBroken;
+	public bool isNearAStar;
 	public cakeslice.Outline consoleOutline;
 	bool alreadyOpened;
 	bool questPartNotActivated = true;
@@ -30,6 +33,7 @@ public class PilotConsole : MonoBehaviour {
 	public bool hyperdriveActive = true;
 	public bool coolingactive = true;
 
+	public Button reloadInStarBtn;
 	public Button hyperdriveActivationBtn;
 	public Color turnedOffColor;
 	public Color turnedOnColor;
@@ -68,9 +72,9 @@ public class PilotConsole : MonoBehaviour {
 
 	void Awake()
 	{
-		if (pilotC == null) 
+		if (instance == null) 
 		{
-			pilotC = this;
+			instance = this;
 		}
 	}
 	void Start()
@@ -79,9 +83,31 @@ public class PilotConsole : MonoBehaviour {
 		procSlider.value = currentProc;
 		consoleOutline.enabled = false;
 	}
+		
+	#region StarRefuel
 
 
+	//dire a cette console qu'on est a proximité d'une étoile!
+	//rendre le bouton reloadinstar interactif.
+	public void YouAreNearAStart()
+	{
+		isNearAStar = true;
+		reloadInStarBtn.interactable = true;
+	}
 
+
+	//met toi sur le path qui conduit a la recharge dans l'étoile.
+	public void EngageRefuelInStarTrajectory()
+	{
+		if (isNearAStar) {
+			shipPath.enabled = true;
+			reloadInStarBtn.interactable = false;
+			//ajouter ici le lancement des evenements liés a l'étoile.
+		}
+	}
+
+
+	#endregion
 	IEnumerator EnergyAutoRefill()
 	{
 		while (moduleActive) {
@@ -313,13 +339,13 @@ public class PilotConsole : MonoBehaviour {
 		{
 			if (!QuestManager.QM.questOneCompleted && jumpInfos.jumpName != "Naine Rouge") 
 			{
-				StartCoroutine( ShowAlertWindow ("IMPOSSIBLE!Destination inccorrect!", 2f,false));
+				StartCoroutine( ShowAlertWindow ("IMPOSSIBLE!Naine Rouge recquise.", 2f,false));
 				return;
 			}
 			InGameManager.IGM.MakeWarpEffect ();
 			hyperdriveBattery -= jumpInfos.reqEnergyForJump;
 			jumpInfos.ClearJumpDestination ();
-			NavigationConsole.navC.ReinitializeConsole ();
+			NavigationConsole.instance.ReinitializeConsole ();
 			if (!questOneDone) {
 				QuestManager.QM.EndQuestFirstJump ();
 				questOneDone = true;

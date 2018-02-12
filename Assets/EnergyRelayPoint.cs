@@ -23,12 +23,12 @@ public class EnergyRelayPoint : MonoBehaviour {
 	void OnMouseOver()
 	{
 		if (Input.GetMouseButton (0)) {
-			if (EnergyConsole.singleton.isCreatingLink) 
+			if (EnergyConsole.instance.isCreatingLink) 
 			{
 				if (activeConnections < maxConnections) 
 				{
 //					LineR.SetPosition (1, originPoint.position);
-					EnergyConsole.singleton.EnergyLP.AddRelayPoint(this);
+					EnergyConsole.instance.EnergyLP.AddRelayPoint(this);
 				}
 			}
 		}

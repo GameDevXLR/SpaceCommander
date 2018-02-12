@@ -10,6 +10,7 @@ public class SignatureProperties : MonoBehaviour {
 //	Button sigBtn;
 	public string startInfo;
 	public string detailedInfo = "Naine Rouge";
+	public int skyboxIndexForJump;
 	public float scanTime;
 	public int scanRequiredEnergy;
 	public Color goodStuffColor;
@@ -39,16 +40,16 @@ public class SignatureProperties : MonoBehaviour {
 //		sigBtn = GetComponent<Button> ();
 //		sigBtn.onClick.AddListener (StartDetailedScan);
 		infoTxt.text = startInfo;
-		JumpPanel = NavigationConsole.navC.JumpListPanel;
+		JumpPanel = NavigationConsole.instance.JumpListPanel;
 	}
 
 	public void StartDetailedScan()
 	{
-		if (NavigationConsole.navC.isScanning || NavigationConsole.navC.isTransfering) 
+		if (NavigationConsole.instance.isScanning || NavigationConsole.instance.isTransfering) 
 		{
 			return;
 		}
-		if (NavigationConsole.navC.currentEnergy > scanRequiredEnergy) 
+		if (NavigationConsole.instance.currentEnergy > scanRequiredEnergy) 
 		{
 			StartCoroutine (DetailedScanProcedure());
 			return; // vaut mieux return car quand ca baisse : ca peut activer le else.
@@ -61,12 +62,12 @@ public class SignatureProperties : MonoBehaviour {
 
 	IEnumerator DetailedScanProcedure()
 	{
-		NavigationConsole.navC.isScanning = true;
+		NavigationConsole.instance.isScanning = true;
 		if (giveQuestOne) {
 			QuestManager.QM.QuestFindStarStep4 ();
 		}
 		audioS.PlayOneShot (detailedScanSnd);
-		NavigationConsole.navC.ChangeEnergy(- scanRequiredEnergy);
+		NavigationConsole.instance.ChangeEnergy(- scanRequiredEnergy);
 		StartCoroutine( ShowAlertWindow ("Analyse détaillée de la signature énergétique en cours...", true, scanTime));
 //		sigBtn.interactable = false;
 		yield return new WaitForSecondsRealtime (scanTime);
@@ -92,17 +93,17 @@ public class SignatureProperties : MonoBehaviour {
 		}
 		myEvent.Invoke ();
 		infoTxt.text = detailedInfo;
-		NavigationConsole.navC.isScanning = false;
+		NavigationConsole.instance.isScanning = false;
 
 	}
 
 	public void TransferTheJumpInfo()
 	{
-		if (NavigationConsole.navC.isTransfering ||NavigationConsole.navC.isScanning) 
+		if (NavigationConsole.instance.isTransfering ||NavigationConsole.instance.isScanning) 
 		{
 			return;
 		}
-		if (NavigationConsole.navC.currentEnergy > scanRequiredEnergy*4) 
+		if (NavigationConsole.instance.currentEnergy > scanRequiredEnergy*4) 
 		{
 			StartCoroutine (TransferInfoProcedure ());
 			return;
@@ -116,37 +117,37 @@ public class SignatureProperties : MonoBehaviour {
 
 	IEnumerator TransferInfoProcedure()
 	{
-		NavigationConsole.navC.isTransfering = true;
+		NavigationConsole.instance.isTransfering = true;
 //		sigBtn.interactable = false;
-		NavigationConsole.navC.ChangeEnergy(- scanRequiredEnergy*4);
+		NavigationConsole.instance.ChangeEnergy(- scanRequiredEnergy*4);
 
-		StartCoroutine(ShowAlertWindow( "Transfert des coordonnées de bond en cours...",true,(scanTime * 10)/NavigationConsole.navC.currentProc));
-		yield return new WaitForSecondsRealtime ((scanTime * 10)/NavigationConsole.navC.currentProc);
+		StartCoroutine(ShowAlertWindow( "Transfert des coordonnées de bond en cours...",true,(scanTime * 10)/NavigationConsole.instance.currentProc));
+		yield return new WaitForSecondsRealtime ((scanTime * 10)/NavigationConsole.instance.currentProc);
 		StartCoroutine(ShowAlertWindow( "Destination transmise au module de pilotage.",true,3f));
-		PilotConsole.pilotC.jumpInfos.SetNewDestination (startInfo, detailedInfo, scanRequiredEnergy * 4, eventCode, gameObject);
+		PilotConsole.instance.jumpInfos.SetNewDestination (startInfo, detailedInfo, scanRequiredEnergy * 4, eventCode,skyboxIndexForJump, gameObject);
 		if (giveQuestOne) {
 			giveQuestOne = false;
 			QuestManager.QM.EndQuestFindStar ();
 		}
 		audioS.PlayOneShot (sendCoordonatesSnd);
-		NavigationConsole.navC.isTransfering = false;
+		NavigationConsole.instance.isTransfering = false;
 	}
 
 	IEnumerator ShowAlertWindow(string txt, bool isPositive, float displayTime)
 	{
 		if (isPositive) 
 		{
-			NavigationConsole.navC.loadingPanel.GetComponent<Image> ().color = goodStuffColor;
+			NavigationConsole.instance.loadingPanel.GetComponent<Image> ().color = goodStuffColor;
 			
 		} else 
 		{
-			NavigationConsole.navC.loadingPanel.GetComponent<Image> ().color = badStuffColor;
+			NavigationConsole.instance.loadingPanel.GetComponent<Image> ().color = badStuffColor;
 			
 		}
-		NavigationConsole.navC.loadingPanel.GetComponentInChildren<Text> ().text = txt;
-		NavigationConsole.navC.loadingPanel.SetActive (true);
+		NavigationConsole.instance.loadingPanel.GetComponentInChildren<Text> ().text = txt;
+		NavigationConsole.instance.loadingPanel.SetActive (true);
 		yield return new WaitForSeconds (displayTime);
-		NavigationConsole.navC.loadingPanel.SetActive (false);
+		NavigationConsole.instance.loadingPanel.SetActive (false);
 		
 	}
 

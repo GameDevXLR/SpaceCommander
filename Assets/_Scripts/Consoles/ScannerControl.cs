@@ -29,7 +29,7 @@ public class ScannerControl : MonoBehaviour {
 			RaycastHit hit;
 			if(Physics.Raycast (ray, out hit, 5, targetable))
 			{
-				if(NavigationConsole.navC.currentEnergy < pulseEnergy)
+				if(NavigationConsole.instance.currentEnergy < pulseEnergy)
 				{
 					return;
 				}
@@ -38,7 +38,7 @@ public class ScannerControl : MonoBehaviour {
 					alreadyGaveQuest = true;
 					QuestManager.QM.QuestFindStarStep2 ();
 				}
-				NavigationConsole.navC.ChangeEnergy (-pulseEnergy);
+				NavigationConsole.instance.ChangeEnergy (-pulseEnergy);
 				GameObject go = Instantiate (pulseObj);
 				go.transform.position = hit.point;
 				go.transform.parent = transform;

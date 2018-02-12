@@ -8,14 +8,14 @@ public class AreaDetectionScript : MonoBehaviour {
 	{
 		if (other.tag == "Player") 
 		{
-			NavigationConsole.navC.ShowOrHideTheInterface (true);
+			NavigationConsole.instance.ShowOrHideTheInterface (true);
 		}
 	}
-	void OnTriggerExit(Collider other)
-	{
-		if (other.tag == "Player") 
-		{
-			NavigationConsole.navC.ShowOrHideTheInterface (false);
-		}
-	}
+//	void OnTriggerExit(Collider other)
+//	{
+//		if (other.tag == "Player") 
+//		{
+//			NavigationConsole.navC.ShowOrHideTheInterface (false);
+//		}
+//	}
 }

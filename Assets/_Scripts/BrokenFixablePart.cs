@@ -48,7 +48,7 @@ public class BrokenFixablePart : MonoBehaviour {
 	void OnMouseDown()
 	{
 		if (isBroken) {
-			PilotConsole.pilotC.RepairTheModule ();
+			PilotConsole.instance.RepairTheModule ();
 			FixThePart ();
 		}
 	}

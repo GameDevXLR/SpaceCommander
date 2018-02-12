@@ -38,20 +38,20 @@ public class EnergySlotBehaviour{
 
 	void ActuGlobalPowerConsumption(int oldRegen, int newRegen)
 	{
-		EnergyConsole.singleton.transfoEnergyRate -= oldRegen;
-		EnergyConsole.singleton.transfoEnergyRate += newRegen;
-		EnergyConsole.singleton.consoEnergyDisplayTxt.text = EnergyConsole.singleton.transfoEnergyRate.ToString();
+		EnergyConsole.instance.transfoEnergyRate -= oldRegen;
+		EnergyConsole.instance.transfoEnergyRate += newRegen;
+		EnergyConsole.instance.consoEnergyDisplayTxt.text = EnergyConsole.instance.transfoEnergyRate.ToString();
 	}
 
 	void ActualizeTheAssociatedConsole()
 	{
 		if (name == ConsoleName.navigation) 
 		{
-			NavigationConsole.navC.energyRegen = regenRate;
+			NavigationConsole.instance.energyRegen = regenRate;
 		}
 		if (name == ConsoleName.pilot) 
 		{
-			PilotConsole.pilotC.energyRegen = regenRate;
+			PilotConsole.instance.energyRegen = regenRate;
 		}
 		if (name == ConsoleName.shield) 
 		{

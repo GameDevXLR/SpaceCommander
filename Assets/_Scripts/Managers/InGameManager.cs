@@ -13,6 +13,8 @@ public class InGameManager : MonoBehaviour {
 	public GameObject questCanvasObj;
 	public GameObject controlRoomDoor;
 	public GameObject lockedControlRoomDoor;
+
+	public GameObject starForRefuelObj;
 	public PostProcessingProfile PPP;
 //	public Material newSkybox;
 	bool isJumping;
@@ -34,7 +36,7 @@ public class InGameManager : MonoBehaviour {
 	void Start () {
 		Cursor.visible = true;
 		ConfigureThePPP ();
-		Invoke( "MakeWarpEffect",2f);
+//		ActivateStarEvent ();
 	}
 
 	public void ActivateTheQuestPanel()
@@ -69,8 +71,22 @@ public class InGameManager : MonoBehaviour {
 		StartCoroutine (PPPProcedure());
 		yield return new WaitForSecondsRealtime (3f);
 		isJumping = false;
-		WarpManager.singleton.ChangeTheSkybox ();
+		WarpManager.singleton.ChangeTheSkybox (PilotConsole.instance.jumpInfos.skyboxIndex);
+		if (PilotConsole.instance.jumpInfos.eventCode == 1) 
+		{
+			//si t'es une étoile...
+			ActivateStarEvent();
+
+		}
 	}
+
+	public void ActivateStarEvent()
+	{
+		//définir ici ce qu'il se passe quand on arrive dans un systeme ou ya une étoile...
+		starForRefuelObj.SetActive(true); //active l'étoile (son visuel) : a optimiser / rendre plus random etc...
+		PilotConsole.instance.YouAreNearAStart(); //dire a la console qu'on est proche d'une étoile...
+	}
+
 	IEnumerator PPPProcedure ()
 	{
 		float i = PPP.bloom.settings.bloom.intensity;

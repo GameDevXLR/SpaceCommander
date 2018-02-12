@@ -57,12 +57,12 @@ public class ScanInterestPoint : MonoBehaviour {
 		GetComponent<Button> ().enabled = true;
 		GetComponent<AudioSource> ().PlayOneShot (pointLockedSnd);
 		isDetected = true;
-		sigInfoObj = Instantiate (SignatureInfoPrefab, NavigationConsole.navC.scanSignaturePanel.transform);
-		NavigationConsole.navC.listOfSignatures.Add (sigInfoObj);
+		sigInfoObj = Instantiate (SignatureInfoPrefab, NavigationConsole.instance.scanSignaturePanel.transform);
+		NavigationConsole.instance.listOfSignatures.Add (sigInfoObj);
 		sigInfoObj.GetComponent<SignaturePropThreeD> ().startInfo = codeName;
 		sigInfoObj.GetComponent<SignaturePropThreeD> ().OriginOfLine = transform.position;
-		sigInfoObj.GetComponent<SignaturePropThreeD> ().indexDetectedPoint = NavigationConsole.navC.indexDetectedPt;
-		NavigationConsole.navC.indexDetectedPt++;
+		sigInfoObj.GetComponent<SignaturePropThreeD> ().indexDetectedPoint = NavigationConsole.instance.indexDetectedPt;
+		NavigationConsole.instance.indexDetectedPt++;
 		if (giveFirstQuest) {
 			QuestManager.QM.QuestFindStarStep3 ();
 			sigInfoObj.GetComponent<SignaturePropThreeD> ().eventCode = 1;//code pour naine rouge

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class JumpInfoHolder : MonoBehaviour {
-
+	public int skyboxIndex;
 	public bool gotJumpCoordonates;
 	public string jumpCodeName;
 	public string jumpName;
@@ -16,7 +16,7 @@ public class JumpInfoHolder : MonoBehaviour {
 	//code d'évenement, utiliser partout: 
 	public int eventCode;
 
-	public void SetNewDestination(string codeName, string name, int energy, int code, GameObject obj)
+	public void SetNewDestination(string codeName, string name, int energy, int code,int skyboxIdx, GameObject obj)
 	{
 		if (navJumpableInfoObj != null) {
 			if (navJumpableInfoObj.GetComponent<SignaturePropThreeD> ()) {
@@ -24,21 +24,22 @@ public class JumpInfoHolder : MonoBehaviour {
 				navJumpableInfoObj.GetComponent<MeshRenderer>().material = navJumpableInfoObj.GetComponent<SignaturePropThreeD> ().rdyForJumpMat;
 			}
 		}
+		skyboxIndex = skyboxIdx;
 		eventCode = code;
 		jumpCodeName = codeName;
 		jumpName = name;
 		navJumpableInfoObj = obj;
 		reqEnergyForJump = energy;
 		gotJumpCoordonates = true;
-		PilotConsole.pilotC.jumpDestination.text = jumpName;
-		PilotConsole.pilotC.jumpBtn.GetComponent<Image> ().color = goodColor;
+		PilotConsole.instance.jumpDestination.text = jumpName;
+		PilotConsole.instance.jumpBtn.GetComponent<Image> ().color = goodColor;
 
 	}
 
 	public void ClearJumpDestination()
 	{
-		PilotConsole.pilotC.jumpDestination.text = "";
-		PilotConsole.pilotC.jumpBtn.GetComponent<Image> ().color = badColor;
+		PilotConsole.instance.jumpDestination.text = "";
+		PilotConsole.instance.jumpBtn.GetComponent<Image> ().color = badColor;
 		gotJumpCoordonates = false;
 	}
 }

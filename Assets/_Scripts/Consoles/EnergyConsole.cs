@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EnergyConsole : MonoBehaviour {
 	public bool isActive = true;
-	public static EnergyConsole singleton;
+	public static EnergyConsole instance;
 	public int stockedEnergy = 1000;
 	public int maxStockableEnergy = 2000;
 	public int transfoEnergyRate; // déduit des lignes d'énergies créées par le joueur : dans EnergySlotBehaviour
@@ -23,11 +23,11 @@ public class EnergyConsole : MonoBehaviour {
 
 	void Awake()
 	{
-		if (singleton != null) {
+		if (instance != null) {
 			Destroy (this);
 		} else 
 		{
-			singleton = this;
+			instance = this;
 		}
 	}
 

@@ -39,12 +39,12 @@ public class QuestManager : MonoBehaviour {
 	public void StartQuestFindStar()
 	{
 		quest1Item =  Instantiate (questItem, questPanel);
-		NavigationConsole.navC.ChangeOutline ();
+		NavigationConsole.instance.ChangeOutline ();
 
 	}
 	public void QuestFindStarStep2()
 	{
-		NavigationConsole.navC.ChangeOutline ();
+		NavigationConsole.instance.ChangeOutline ();
 		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Trouvez la naine rouge pour y mettre le cap.";
 		GetComponent<AudioSource> ().PlayOneShot (questFindStar2);
 	}
@@ -80,21 +80,21 @@ public class QuestManager : MonoBehaviour {
 		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Trouve le module défectueux et répare le.";
 		audioS.PlayOneShot (derivateurDefectueuxSnd);
 		quest2Part.BrakeThePart ();
-		InGameManager.IGM.OpenTheDoor ();
+//		InGameManager.IGM.OpenTheDoor ();
 	}
 
 	public void QuestFirstJumpStep4()
 	{
 		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Réactive le jump.";
 		audioS.PlayOneShot (retourneConsoleSnd);
-		PilotConsole.pilotC.consoleOutline.enabled = true;
+		PilotConsole.instance.consoleOutline.enabled = true;
 	}
 	public void EndQuestFirstJump()
 	{
 		questTwoCompleted = true;
 		audioS.PlayOneShot (finPremiereMissionSnd);
 		Destroy (quest2Item);
-		PilotConsole.pilotC.consoleOutline.enabled = false;
+		PilotConsole.instance.consoleOutline.enabled = false;
 
 	}
 	#endregion

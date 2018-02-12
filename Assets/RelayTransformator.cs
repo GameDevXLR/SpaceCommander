@@ -24,12 +24,12 @@ public class RelayTransformator : MonoBehaviour {
 	{
 		if (Input.GetMouseButton (0)) 
 		{
-			if (EnergyConsole.singleton.isCreatingLink) 
+			if (EnergyConsole.instance.isCreatingLink) 
 			{
-				if (EnergyConsole.singleton.EnergyLP.relays.Count != 0) 
+				if (EnergyConsole.instance.EnergyLP.relays.Count != 0) 
 				{
 					meshR.material = highlightMat;
-					EnergyConsole.singleton.EnergyLP.FinishLinkCreation(transform.localPosition);
+					EnergyConsole.instance.EnergyLP.FinishLinkCreation(transform.localPosition);
 
 
 				}
@@ -39,9 +39,9 @@ public class RelayTransformator : MonoBehaviour {
 
 	void OnMouseUp()
 	{
-			if (EnergyConsole.singleton.isCreatingLink) 
+			if (EnergyConsole.instance.isCreatingLink) 
 			{
-				EnergyConsole.singleton.EnergyLP.FinishLinkCreation(transform.localPosition);
+				EnergyConsole.instance.EnergyLP.FinishLinkCreation(transform.localPosition);
 			}
 
 	}
