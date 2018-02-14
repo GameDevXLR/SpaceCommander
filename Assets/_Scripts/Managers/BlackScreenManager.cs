@@ -18,6 +18,8 @@ public class BlackScreenManager : MonoBehaviour {
 //	public AudioClip UTGTransmission;
 	public AudioClip reserveFaible;
 	public AudioClip premiereTache;
+	public TextTyper typerScript;
+
 	public bool quickStart;
 	void Start()
 	{
@@ -32,33 +34,44 @@ public class BlackScreenManager : MonoBehaviour {
 			mainTxt.enabled = true;
 			playerAudioSource.PlayOneShot (testTuring);
 			yield return new WaitForSecondsRealtime (2.8f);
+			typerScript.enabled = false;
 			mainTxt.text = "Checkup system over…";
+			typerScript.enabled = true;
 			playerAudioSource.PlayOneShot (checkupSysteme);
 			yield return new WaitForSecondsRealtime (2.5f);
+			typerScript.enabled = false;
 			mainTxt.text = "Initializing complex thoughts software...";
+			typerScript.enabled = true;
 			playerAudioSource.PlayOneShot (initialisationModule);
 			yield return new WaitForSecondsRealtime (3.3f);
-
+			typerScript.enabled = false;
 			mainTxt.text = "Welcome Unit XPTDR-3.";
+			typerScript.enabled = true;
 			playerAudioSource.PlayOneShot (BienvenueUnit);
 
 			yield return new WaitForSecondsRealtime (4f);
+			typerScript.enabled = false;
 			mainTxt.text = "You’ve been activated to secure the future of humanity in this galaxy.";
+			typerScript.enabled = true;
 			playerAudioSource.PlayOneShot (avenirHuma);
 
 			//			yield return new WaitForSecondsRealtime (5f);
 			//			mainTxt.text = "L’UTG te transmettra le controle des commandes au fur et a mesure.";
 			//			playerAudioSource.PlayOneShot (UTGTransmission);
 
-			yield return new WaitForSecondsRealtime (4f);
+			yield return new WaitForSecondsRealtime (5f);
+			typerScript.enabled = false;
 			mainTxt.text = "Our power reserves are very low...Your first mission is to find a Blue Giant in which we could refuel.";
+			typerScript.enabled = true;
 			playerAudioSource.PlayOneShot (reserveFaible);
-			yield return new WaitForSecondsRealtime (6f);
+			yield return new WaitForSecondsRealtime (7f);
+			typerScript.enabled = false;
 		}
 		playerAudioSource.PlayOneShot (premiereTache);
 		CC.enabled = true;
 		CC.gameObject.GetComponent<FirstPersonController> ().enabled = true;
 		mainTxt.text =  "Go to the navigation console to select a destination.";
+		typerScript.enabled = true;
 		backScreenImg.CrossFadeAlpha (0, 5f, false);
 
 		yield return new WaitForSecondsRealtime (2.5f);

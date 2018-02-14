@@ -12,7 +12,7 @@ public class TextTyper : MonoBehaviour {
 	Text textComp;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		textComp = GetComponent<Text>();
 		message = textComp.text;
 		textComp.text = "";

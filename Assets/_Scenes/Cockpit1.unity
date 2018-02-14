@@ -157,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 59785659d03ac444e9be4df7169fb450, type: 3}
-  actionMusic: {fileID: 8300000, guid: b6bd0420a8626f74cacffc7d136b55ee, type: 3}
   audioS: {fileID: 1597282831}
 --- !u!135 &35544981
 SphereCollider:
@@ -201,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &159452387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,37 +283,6 @@ Transform:
   m_Father: {fileID: 415512426}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &183189137
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 693
-  m_Height: 390
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &199835924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,6 +4125,37 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!84 &660170399
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 693
+  m_Height: 390
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!23 &712194195 stripped
 MeshRenderer:
   m_PrefabParentObject: {fileID: 23807380362866572, guid: f39e5bdecbb7a644f9c38379af356f0d,
@@ -11247,37 +11246,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!84 &1055475501
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 693
-  m_Height: 390
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!23 &1118290745 stripped
 MeshRenderer:
   m_PrefabParentObject: {fileID: 23525839564826008, guid: f39e5bdecbb7a644f9c38379af356f0d,
@@ -11398,7 +11366,7 @@ Prefab:
     - target: {fileID: 114130221190185174, guid: e704770ae0807c2429aa887a53d0abb1,
         type: 2}
       propertyPath: quickStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 223089140958318574, guid: e704770ae0807c2429aa887a53d0abb1,
         type: 2}
@@ -11456,6 +11424,11 @@ Prefab:
       propertyPath: m_Text
       value: "Turing test achieved... \r"
       objectReference: {fileID: 0}
+    - target: {fileID: 114130221190185174, guid: e704770ae0807c2429aa887a53d0abb1,
+        type: 2}
+      propertyPath: typerScript
+      value: 
+      objectReference: {fileID: 2022342242}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e704770ae0807c2429aa887a53d0abb1, type: 2}
   m_IsPrefabParent: 0
@@ -11580,7 +11553,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1345981413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0abbd69bf0894cd41bc3888e4565175b, type: 3}
   m_Name: 
@@ -11743,7 +11716,7 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1055475501}
+      objectReference: {fileID: 660170399}
     - target: {fileID: 114841895250487402, guid: f39e5bdecbb7a644f9c38379af356f0d,
         type: 2}
       propertyPath: outlineShaderMaterial
@@ -20107,6 +20080,37 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!84 &1702586740
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 693
+  m_Height: 390
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1810217984 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1527926918522950, guid: 10da94f0cb3985243ad4ee0ad8f61afd,
@@ -20336,6 +20340,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcad23c757341ef458e8df2eff35abe5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2022342240 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1411291828790790, guid: e704770ae0807c2429aa887a53d0abb1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1215910652}
+--- !u!114 &2022342242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2022342240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f207747211a34b84889a4cea30d43068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterPause: 0.015
+  typeSound1: {fileID: 0}
+  typeSound2: {fileID: 0}
 --- !u!1 &2105782831
 GameObject:
   m_ObjectHideFlags: 0
