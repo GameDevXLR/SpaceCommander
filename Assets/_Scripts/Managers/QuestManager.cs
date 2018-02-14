@@ -45,16 +45,16 @@ public class QuestManager : MonoBehaviour {
 	public void QuestFindStarStep2()
 	{
 		NavigationConsole.instance.ChangeOutline ();
-		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Trouvez la naine rouge pour y mettre le cap.";
+		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Find the star: Blue Giant.";
 		GetComponent<AudioSource> ().PlayOneShot (questFindStar2);
 	}
 	public void QuestFindStarStep3()
 	{
-		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Analysez votre découverte dans Signature pour obtenir plus de détails.";
+		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Analyze your discovery to get detailed informations.";
 	}
 	public void QuestFindStarStep4()
 	{
-		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Vous avez trouver la naine rouge. Transférez les coordonnées au poste de pilotage.";
+		quest1Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "You have found the Blue Giant: Transfer the coordinates.";
 	}
 	public void EndQuestFindStar()
 	{
@@ -67,17 +67,17 @@ public class QuestManager : MonoBehaviour {
 	public void StartQuestFirstJump()
 	{
 		quest2Item = Instantiate (questItem, questPanel);
-		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Charge la batterie de l'hyperdrive.";
+		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Load the hyperdrive.";
 //		PilotConsole.pilotC.jumpBtn.SetActive (true);
 	}
 	public void QuestFirstJumpStep2()
 	{
 		
-		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Initialise le jump.";
+		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Initialize the jump.";
 	}
 	public void QuestFirstJumpStep3()
 	{
-		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Trouve le module défectueux et répare le.";
+		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Find the Broken component and repair it.";
 		audioS.PlayOneShot (derivateurDefectueuxSnd);
 		quest2Part.BrakeThePart ();
 //		InGameManager.IGM.OpenTheDoor ();
@@ -85,8 +85,8 @@ public class QuestManager : MonoBehaviour {
 
 	public void QuestFirstJumpStep4()
 	{
-		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Réactive le jump.";
-		audioS.PlayOneShot (retourneConsoleSnd);
+		quest2Item.transform.GetChild (0).GetComponentInChildren<Text> ().text = "Make the jump!";
+//		audioS.PlayOneShot (retourneConsoleSnd);
 		PilotConsole.instance.consoleOutline.enabled = true;
 	}
 	public void EndQuestFirstJump()

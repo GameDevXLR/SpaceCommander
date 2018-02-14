@@ -69,6 +69,7 @@ public class PilotConsole : MonoBehaviour {
 	public Color goodStuffColor;
 	public Color badStuffColor;
 
+	public AudioClip actionMusic;
 
 	void Awake()
 	{
@@ -102,6 +103,8 @@ public class PilotConsole : MonoBehaviour {
 		if (isNearAStar) {
 			shipPath.enabled = true;
 			reloadInStarBtn.interactable = false;
+			GetComponent<AudioSource> ().clip = actionMusic;
+			GetComponent<AudioSource> ().Play ();
 			//ajouter ici le lancement des evenements liés a l'étoile.
 		}
 	}

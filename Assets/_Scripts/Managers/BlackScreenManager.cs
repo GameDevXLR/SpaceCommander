@@ -15,7 +15,7 @@ public class BlackScreenManager : MonoBehaviour {
 	public AudioClip initialisationModule;
 	public AudioClip BienvenueUnit;
 	public AudioClip avenirHuma;
-	public AudioClip UTGTransmission;
+//	public AudioClip UTGTransmission;
 	public AudioClip reserveFaible;
 	public AudioClip premiereTache;
 	public bool quickStart;
@@ -32,33 +32,33 @@ public class BlackScreenManager : MonoBehaviour {
 			mainTxt.enabled = true;
 			playerAudioSource.PlayOneShot (testTuring);
 			yield return new WaitForSecondsRealtime (2.8f);
-			mainTxt.text = "Checkup systemes terminés...";
+			mainTxt.text = "Checkup system over…";
 			playerAudioSource.PlayOneShot (checkupSysteme);
 			yield return new WaitForSecondsRealtime (2.5f);
-			mainTxt.text = "Initialisation du module de pensée complexe.";
+			mainTxt.text = "Initializing complex thoughts software...";
 			playerAudioSource.PlayOneShot (initialisationModule);
 			yield return new WaitForSecondsRealtime (3.3f);
 
-			mainTxt.text = "Bienvenue unité de colonisation XPTDR3!";
+			mainTxt.text = "Welcome Unit XPTDR-3.";
 			playerAudioSource.PlayOneShot (BienvenueUnit);
 
 			yield return new WaitForSecondsRealtime (4f);
-			mainTxt.text = "Tu as été initialisé afin d’assurer l’avenir de l’humanité dans cette galaxy.";
+			mainTxt.text = "You’ve been activated to secure the future of humanity in this galaxy.";
 			playerAudioSource.PlayOneShot (avenirHuma);
 
-			yield return new WaitForSecondsRealtime (5f);
-			mainTxt.text = "L’UTG te transmettra le controle des commandes au fur et a mesure.";
-			playerAudioSource.PlayOneShot (UTGTransmission);
+			//			yield return new WaitForSecondsRealtime (5f);
+			//			mainTxt.text = "L’UTG te transmettra le controle des commandes au fur et a mesure.";
+			//			playerAudioSource.PlayOneShot (UTGTransmission);
 
 			yield return new WaitForSecondsRealtime (4f);
-			mainTxt.text = "Les réserves d’énergie du vaisseau sont critiques.";
+			mainTxt.text = "Our power reserves are very low...Your first mission is to find a Blue Giant in which we could refuel.";
 			playerAudioSource.PlayOneShot (reserveFaible);
-		yield return new WaitForSecondsRealtime (3f);
+			yield return new WaitForSecondsRealtime (6f);
 		}
 		playerAudioSource.PlayOneShot (premiereTache);
 		CC.enabled = true;
 		CC.gameObject.GetComponent<FirstPersonController> ().enabled = true;
-		mainTxt.text =  "Ta première tache consiste a trouver une étoile ou nous pourrions nous approvisionner.";
+		mainTxt.text =  "Go to the navigation console to select a destination.";
 		backScreenImg.CrossFadeAlpha (0, 5f, false);
 
 		yield return new WaitForSecondsRealtime (2.5f);
@@ -66,4 +66,44 @@ public class BlackScreenManager : MonoBehaviour {
 		yield return new WaitForSecondsRealtime (2.5f);
 		transform.parent.gameObject.SetActive (false);
 	}
+	//OLD FR
+//		if (!quickStart) {
+//			yield return new WaitForSecondsRealtime (1f);
+//			mainTxt.enabled = true;
+//			playerAudioSource.PlayOneShot (testTuring);
+//			yield return new WaitForSecondsRealtime (2.8f);
+//			mainTxt.text = "Checkup systemes terminés...";
+//			playerAudioSource.PlayOneShot (checkupSysteme);
+//			yield return new WaitForSecondsRealtime (2.5f);
+//			mainTxt.text = "Initialisation du module de pensée complexe.";
+//			playerAudioSource.PlayOneShot (initialisationModule);
+//			yield return new WaitForSecondsRealtime (3.3f);
+//
+//			mainTxt.text = "Bienvenue unité de colonisation XPTDR3!";
+//			playerAudioSource.PlayOneShot (BienvenueUnit);
+//
+//			yield return new WaitForSecondsRealtime (4f);
+//			mainTxt.text = "Tu as été initialisé afin d’assurer l’avenir de l’humanité dans cette galaxy.";
+//			playerAudioSource.PlayOneShot (avenirHuma);
+//
+////			yield return new WaitForSecondsRealtime (5f);
+////			mainTxt.text = "L’UTG te transmettra le controle des commandes au fur et a mesure.";
+////			playerAudioSource.PlayOneShot (UTGTransmission);
+//
+//			yield return new WaitForSecondsRealtime (4f);
+//			mainTxt.text = "Les réserves d’énergie du vaisseau sont critiques.";
+//			playerAudioSource.PlayOneShot (reserveFaible);
+//		yield return new WaitForSecondsRealtime (3f);
+//		}
+//		playerAudioSource.PlayOneShot (premiereTache);
+//		CC.enabled = true;
+//		CC.gameObject.GetComponent<FirstPersonController> ().enabled = true;
+//		mainTxt.text =  "Ta première tache consiste a trouver une étoile ou nous pourrions nous approvisionner.";
+//		backScreenImg.CrossFadeAlpha (0, 5f, false);
+//
+//		yield return new WaitForSecondsRealtime (2.5f);
+//		InGameManager.IGM.ActivateTheQuestPanel ();
+//		yield return new WaitForSecondsRealtime (2.5f);
+//		transform.parent.gameObject.SetActive (false);
+//	}
 }

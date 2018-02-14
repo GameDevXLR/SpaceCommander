@@ -70,4 +70,5 @@ public class EnergyConsole : MonoBehaviour {
 			yield return new WaitForSecondsRealtime (1f);
 		}
 	}
+
 }
