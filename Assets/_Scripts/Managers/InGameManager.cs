@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets;
 using UnityEngine.PostProcessing;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InGameManager : MonoBehaviour {
 
-
+	public bool hasLooseTheGame;
 	public static InGameManager IGM;
 	public GameObject playerObj;
 	public GameObject questCanvasObj;
 	public GameObject controlRoomDoor;
 	public GameObject lockedControlRoomDoor;
-
+	public GameObject spaceShip;
 	public GameObject starForRefuelObj;
 	public PostProcessingProfile PPP;
+	public Text mainTextDisplayer;
+
+//	public AudioClip youLooseVoice;
+//	public AudioSource effectsAudioS;
+
 //	public Material newSkybox;
 	bool isJumping;
 	[Header("Reglage du PPP")]
@@ -36,6 +42,7 @@ public class InGameManager : MonoBehaviour {
 	void Start () {
 		Cursor.visible = true;
 		ConfigureThePPP ();
+//		MakeEndOfWarpEffect (); //pour test...
 //		ActivateStarEvent ();
 	}
 
@@ -105,6 +112,8 @@ public class InGameManager : MonoBehaviour {
 			PPP.colorGrading.settings = tmpColorG;
 			PPP.chromaticAberration.settings = tmpChromA;
 		}
+		//change the ship position;
+		spaceShip.transform.localPosition = new Vector3(-1000,220,-3850);
 
 		StartCoroutine (PPPEndProcedure (i,j,k));
 
@@ -145,5 +154,28 @@ public class InGameManager : MonoBehaviour {
 		PPP.bloom.settings = tmpBloom;
 		PPP.colorGrading.settings = tmpColorG;
 		PPP.chromaticAberration.settings = tmpChromA;
+	}
+
+	public void EndTheGame()
+	{
+		//you LOOSE:
+		//a completer.
+		Debug.Log("you lose");
+		hasLooseTheGame = true;
+		StartCoroutine (LooseProcedure ());
+	}
+
+	IEnumerator LooseProcedure()
+	{
+		StartCoroutine (PPPProcedure());
+
+		mainTextDisplayer.GetComponent<TextTyper> ().enabled = false;
+		mainTextDisplayer.text = "YOU LOSE...You'll do better in another life";
+//		effectsAudioS.PlayOneShot (youLooseVoice);
+		mainTextDisplayer.enabled = true;
+		mainTextDisplayer.GetComponent<TextTyper> ().enabled = true;
+
+		yield return new WaitForSecondsRealtime (3f);
+		SceneManager.LoadScene (0);
 	}
 }

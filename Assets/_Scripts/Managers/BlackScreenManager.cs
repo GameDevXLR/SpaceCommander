@@ -21,6 +21,7 @@ public class BlackScreenManager : MonoBehaviour {
 	public TextTyper typerScript;
 
 	public bool quickStart;
+	public bool isPlayingIntro;
 	void Start()
 	{
 		GetComponentInParent<Canvas> ().enabled = true;
@@ -29,6 +30,8 @@ public class BlackScreenManager : MonoBehaviour {
 
 	IEnumerator StartingProcedure()
 	{
+		isPlayingIntro = true;
+//		ChechForStopIntroDialog ();
 		if (!quickStart) {
 			yield return new WaitForSecondsRealtime (1f);
 			mainTxt.enabled = true;
@@ -67,6 +70,7 @@ public class BlackScreenManager : MonoBehaviour {
 			yield return new WaitForSecondsRealtime (7f);
 			typerScript.enabled = false;
 		}
+		isPlayingIntro = false;
 		playerAudioSource.PlayOneShot (premiereTache);
 		CC.enabled = true;
 		CC.gameObject.GetComponent<FirstPersonController> ().enabled = true;
@@ -78,6 +82,19 @@ public class BlackScreenManager : MonoBehaviour {
 		InGameManager.IGM.ActivateTheQuestPanel ();
 		yield return new WaitForSecondsRealtime (2.5f);
 		transform.parent.gameObject.SetActive (false);
+	}
+
+	public void Update()
+	{
+		if (isPlayingIntro) 
+		{
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Return)) 
+			{
+				StopAllCoroutines ();
+				quickStart = true;
+				StartCoroutine (StartingProcedure());
+			}
+		}
 	}
 	//OLD FR
 //		if (!quickStart) {

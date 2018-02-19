@@ -40,6 +40,15 @@ public class NavigationConsole : MonoBehaviour {
 	public Transform[] detectedPtParents;
 	public Transform[] transferablePtParents;
 
+	AudioSource audioS;
+	public AudioClip deepScanVoice;
+	public bool hasPlayedDeepScanVoice;
+
+	public AudioClip transferCoordinatesVoice;
+	public bool hasPlayedTransferCoorVoice;
+
+	public AudioClip lowPowerVoice;
+	public bool hasPlayedLowPowerVoice;
 	void Awake()
 	{
 		if (instance == null) 
@@ -49,6 +58,7 @@ public class NavigationConsole : MonoBehaviour {
 	}
 	void Start()
 	{
+		audioS = GetComponent<AudioSource> ();
 		StartCoroutine (EnergyAutoRefill ());
 		procSlider.value = currentProc;
 		ChangeOutline ();
@@ -69,6 +79,28 @@ public class NavigationConsole : MonoBehaviour {
 				AddInterestPointDetectable ();	
 			}
 		indexDetectedPt = 0;
+	}
+
+	public void PlayDeepScanVoice()
+	{
+		if (!hasPlayedDeepScanVoice) {
+			audioS.PlayOneShot (deepScanVoice);
+			hasPlayedDeepScanVoice = true;
+		}
+	}
+	public void PlayTransferCoorVoice()
+	{
+		if (!hasPlayedTransferCoorVoice) {
+			audioS.PlayOneShot (transferCoordinatesVoice);
+			hasPlayedTransferCoorVoice = true;
+		}
+	}
+	public void PlayLowPowerVoice()
+	{
+		if (!hasPlayedLowPowerVoice) {
+			audioS.PlayOneShot (lowPowerVoice);
+			hasPlayedLowPowerVoice = true;
+		}
 	}
 
 	IEnumerator EnergyAutoRefill()

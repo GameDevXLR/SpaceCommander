@@ -15,6 +15,10 @@ public class ScannerControl : MonoBehaviour {
 	bool alreadyGaveQuest;
 	public LayerMask targetable;
 
+	public AudioSource audioS;
+	public AudioClip changeRangeVoice;
+	public bool hasPlayedVoiceRange;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -31,6 +35,10 @@ public class ScannerControl : MonoBehaviour {
 			{
 				if(NavigationConsole.instance.currentEnergy < pulseEnergy)
 				{
+					if (!NavigationConsole.instance.hasPlayedLowPowerVoice) 
+					{
+						NavigationConsole.instance.PlayLowPowerVoice ();
+					}
 					return;
 				}
 				if (!alreadyGaveQuest) 
@@ -53,11 +61,21 @@ public class ScannerControl : MonoBehaviour {
 
 	public void ChangeRange(float r)
 	{
+		if (!hasPlayedVoiceRange) 
+		{
+			audioS.PlayOneShot (changeRangeVoice);
+			hasPlayedVoiceRange = true;
+		}
 		rangeLimit = r;
 		ActualizeStrLoss ();
 	}
 	public void ChangeStr( float str)
 	{
+		if (!hasPlayedVoiceRange) 
+		{
+			audioS.PlayOneShot (changeRangeVoice);
+			hasPlayedVoiceRange = true;
+		}
 		sigStr = str;
 		ActualizeStrLoss ();
 

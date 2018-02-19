@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: 3eda22cb75fd46443805d89a4f88bddd
+timeCreated: 1518720495
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Base_cursor_augmentation_hyperspace.001
+    100002: Base_cylindre_hyperspace
+    100004: Base_cylindre_hyperspace.002
+    100006: Button_Base_cylindre_hyperspace.001
+    100008: Button_Jump
+    100010: Buttons01
+    100012: //RootNode
+    100014: Cursor_augmentation
+    100016: Cymindre_jauge hyperspace
+    100018: Ecran01_jump
+    100020: Ecran02
+    100022: ecran03
+    100024: Ecran04
+    100026: Ecran_energie
+    100028: Hologramme_deco01
+    100030: Hologramme_deco02
+    100032: Planete_controlPanel_navig
+    100034: Plaque_cursor_augmentation_hyperspace
+    100036: Socle_plantene_controlpanel
+    100038: Table_Controlpanel
+    100040: Table_Controlpanel.008
+    100042: Table_Controlpanel_jump_cursor
+    100044: Table_Controlpanel_jump_jauge
+    400000: Base_cursor_augmentation_hyperspace.001
+    400002: Base_cylindre_hyperspace
+    400004: Base_cylindre_hyperspace.002
+    400006: Button_Base_cylindre_hyperspace.001
+    400008: Button_Jump
+    400010: Buttons01
+    400012: //RootNode
+    400014: Cursor_augmentation
+    400016: Cymindre_jauge hyperspace
+    400018: Ecran01_jump
+    400020: Ecran02
+    400022: ecran03
+    400024: Ecran04
+    400026: Ecran_energie
+    400028: Hologramme_deco01
+    400030: Hologramme_deco02
+    400032: Planete_controlPanel_navig
+    400034: Plaque_cursor_augmentation_hyperspace
+    400036: Socle_plantene_controlpanel
+    400038: Table_Controlpanel
+    400040: Table_Controlpanel.008
+    400042: Table_Controlpanel_jump_cursor
+    400044: Table_Controlpanel_jump_jauge
+    2100000: Boutonoff
+    2100002: Bouton On
+    2100004: Ecran
+    2100006: Jauge03
+    2100008: Ecran hologramme
+    2100010: Plastique02
+    2100012: Light
+    2100014: Base
+    2100016: Vinylpurple
+    2300000: Base_cursor_augmentation_hyperspace.001
+    2300002: Base_cylindre_hyperspace
+    2300004: Base_cylindre_hyperspace.002
+    2300006: Button_Base_cylindre_hyperspace.001
+    2300008: Button_Jump
+    2300010: Buttons01
+    2300012: Cursor_augmentation
+    2300014: Cymindre_jauge hyperspace
+    2300016: Ecran01_jump
+    2300018: Ecran02
+    2300020: ecran03
+    2300022: Ecran04
+    2300024: Ecran_energie
+    2300026: Hologramme_deco01
+    2300028: Hologramme_deco02
+    2300030: Planete_controlPanel_navig
+    2300032: Plaque_cursor_augmentation_hyperspace
+    2300034: Socle_plantene_controlpanel
+    2300036: Table_Controlpanel
+    2300038: Table_Controlpanel.008
+    2300040: Table_Controlpanel_jump_cursor
+    2300042: Table_Controlpanel_jump_jauge
+    3300000: Base_cursor_augmentation_hyperspace.001
+    3300002: Base_cylindre_hyperspace
+    3300004: Base_cylindre_hyperspace.002
+    3300006: Button_Base_cylindre_hyperspace.001
+    3300008: Button_Jump
+    3300010: Buttons01
+    3300012: Cursor_augmentation
+    3300014: Cymindre_jauge hyperspace
+    3300016: Ecran01_jump
+    3300018: Ecran02
+    3300020: ecran03
+    3300022: Ecran04
+    3300024: Ecran_energie
+    3300026: Hologramme_deco01
+    3300028: Hologramme_deco02
+    3300030: Planete_controlPanel_navig
+    3300032: Plaque_cursor_augmentation_hyperspace
+    3300034: Socle_plantene_controlpanel
+    3300036: Table_Controlpanel
+    3300038: Table_Controlpanel.008
+    3300040: Table_Controlpanel_jump_cursor
+    3300042: Table_Controlpanel_jump_jauge
+    4300000: Base_cylindre_hyperspace.002
+    4300002: Button_Base_cylindre_hyperspace.001
+    4300004: Table_Controlpanel.008
+    4300006: Ecran04
+    4300008: Ecran_energie
+    4300010: ecran03
+    4300012: Ecran01_jump
+    4300014: Ecran02
+    4300016: Hologramme_deco01
+    4300018: Hologramme_deco02
+    4300020: Table_Controlpanel_jump_jauge
+    4300022: Buttons01
+    4300024: Table_Controlpanel_jump_cursor
+    4300026: Planete_controlPanel_navig
+    4300028: Socle_plantene_controlpanel
+    4300030: Cursor_augmentation
+    4300032: Base_cursor_augmentation_hyperspace.001
+    4300034: Button_Jump
+    4300036: Plaque_cursor_augmentation_hyperspace
+    4300038: Base_cylindre_hyperspace
+    4300040: Cymindre_jauge hyperspace
+    4300042: Table_Controlpanel
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

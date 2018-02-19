@@ -9,6 +9,10 @@ public class SunSphereOfInfluence : MonoBehaviour {
 	public AudioClip backgroundMusic;
 //	public AudioClip actionMusic;
 	public AudioSource audioS;
+
+	public AudioSource effectsAudioS;
+	public AudioClip powerRisingVoice;
+
 //	public ParticleSystem shieldImpact; //pour faire des burst un de c 4.
 
 	public void Start()
@@ -21,6 +25,7 @@ public class SunSphereOfInfluence : MonoBehaviour {
 	{
 		if (other.tag == "Ship") 
 		{
+			effectsAudioS.PlayOneShot (powerRisingVoice);
 			playerInside = true;
 			ShipManager.instance.EnableShieldImpactEffect ();
 			Debug.Log ("entering refuel area");
@@ -51,6 +56,11 @@ public class SunSphereOfInfluence : MonoBehaviour {
 		if (playerInside) 
 		{
 			EnergyConsole.instance.stockedEnergy += rechargeRate;
+			if (!EnergyConsole.instance.IsShieldStrongEnough() && !InGameManager.IGM.hasLooseTheGame) 
+			{
+				Debug.Log ("you died! the shield is not strong enough");
+				InGameManager.IGM.EndTheGame ();
+			}
 		}
 	}
 

@@ -104,7 +104,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Utilise le scan de la console de navigation.
+  m_Text: Use the navigation interface to find a star.
 --- !u!222 &222401622740562314
 CanvasRenderer:
   m_ObjectHideFlags: 1

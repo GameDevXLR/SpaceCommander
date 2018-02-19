@@ -70,6 +70,9 @@ public class PilotConsole : MonoBehaviour {
 	public Color badStuffColor;
 
 	public AudioClip actionMusic;
+	public AudioClip loadHyperdriveVoice;
+	public bool hasPlayedLoadHyperVoice;
+
 
 	void Awake()
 	{
@@ -137,7 +140,7 @@ public class PilotConsole : MonoBehaviour {
 							QuestManager.QM.QuestFirstJumpStep2 ();
 						}
 						hyperdriveFull = true;
-						StartCoroutine(ShowAlertWindow("Hyperdrive chargé.",1f, true));
+						StartCoroutine(ShowAlertWindow("Hyperdrive fully loaded.",1f, true));
 					}
 					hyperdriveBatterySlider.value = hyperdriveBattery;
 				}
@@ -200,7 +203,7 @@ public class PilotConsole : MonoBehaviour {
 
 	public void ShutDownHyperdrive()
 	{
-		StartCoroutine( ShowAlertWindow ("Arret forcé de l'hyperdrive!", 3f,false));
+		StartCoroutine( ShowAlertWindow ("Emergency shutdown of the hyperdrive!", 3f,false));
 		hyperdriveRegenSlider.value = 0;
 		hyperdriveBatteryRegen = 0;
 		hyperdriveRegenSlider.interactable = false;
@@ -216,11 +219,11 @@ public class PilotConsole : MonoBehaviour {
 			return;
 		}
 		if (hyperdriveTmp > hyperdriveTmpSlider.maxValue * hyperdriveOverheatPrct / 100) {
-			StartCoroutine (ShowAlertWindow ("L'Hyperdrive doit refroidir.", 3f,false));
+			StartCoroutine (ShowAlertWindow ("The Hyperdrive engine must cool down.", 3f,false));
 
 		} else 
 		{
-			StartCoroutine (ShowAlertWindow ("Démarrage de l'Hyperdrive...", 20f/currentProc,true));
+			StartCoroutine (ShowAlertWindow ("Restarting Hyperdrive engine.", 20f/currentProc,true));
 			hyperdriveActive = true;
 			hyperdriveActivationBtn.GetComponent<Image> ().color = turnedOnColor;
 
@@ -243,7 +246,7 @@ public class PilotConsole : MonoBehaviour {
 		moteurRegenSlider.value = 0;
 		hyperdriveRegenSlider.value = 0;
 		coolingRegenSlider.value = 0;
-		StartCoroutine( ShowAlertWindow ("Pas assez d'énergie!", 1.5f,false));
+		StartCoroutine( ShowAlertWindow ("Not enough power.", 1.5f,false));
 //		ShowParamWindow ();
 		RecalculateConso ();
 	}
@@ -275,6 +278,7 @@ public class PilotConsole : MonoBehaviour {
 		{
 			alreadyOpened = true;
 			QuestManager.QM.StartQuestFirstJump ();
+			GetComponent<AudioSource> ().PlayOneShot (loadHyperdriveVoice);
 
 		}
 		hyperdriveBatteryRegen = (int)newRegen;
@@ -303,13 +307,13 @@ public class PilotConsole : MonoBehaviour {
 	{
 		if (!jumpInfos.gotJumpCoordonates) 
 		{
-			StartCoroutine (ShowAlertWindow ("Aucune destination fournie par la Navigation.", 2f,false));
+			StartCoroutine (ShowAlertWindow ("No destination to jump to.", 2f,false));
 			return;
 		}
 		
 		if (hyperdriveBattery < jumpInfos.reqEnergyForJump) 
 		{
-			StartCoroutine (ShowAlertWindow ("L'hyperdrive n'a pas assez d'énergie en stock.", 2f,false));
+			StartCoroutine (ShowAlertWindow ("Hyperdrive doesn't have enough power.", 2f,false));
 //			GetComponent<AudioSource> ().PlayOneShot (rireErreurSnd);
 			return;
 		} else 
@@ -321,7 +325,7 @@ public class PilotConsole : MonoBehaviour {
 				hyperdriveBattery -= 30;
 				hyperdriveBatteryRegen = 0;
 				hyperdriveBatterySlider.value -= 30;
-				StartCoroutine( ShowAlertWindow( "Dérivateur Défectueux. Baisse du niveau d'énergie de l'Hyperdrive.",3f,false));
+				StartCoroutine( ShowAlertWindow( "DANGER: Hyperdrive disfunctional.",3f,false));
 				LightManager.LM.StartAlertLightProcess ();
 				RecalculateConso ();
 				isBroken = true;
@@ -336,13 +340,13 @@ public class PilotConsole : MonoBehaviour {
 	public void MakeTheFinalJump()
 	{
 		if (isBroken) {
-			StartCoroutine( ShowAlertWindow ("Composant Défectueux. IMPOSSIBLE!", 2f,false));
+			StartCoroutine( ShowAlertWindow ("Warning! Component broken.", 2f,false));
 
 		} else 
 		{
-			if (!QuestManager.QM.questOneCompleted && jumpInfos.jumpName != "Naine Rouge") 
+			if (!QuestManager.QM.questOneCompleted && jumpInfos.jumpName != "Blue Giant") 
 			{
-				StartCoroutine( ShowAlertWindow ("IMPOSSIBLE!Naine Rouge recquise.", 2f,false));
+				StartCoroutine( ShowAlertWindow ("IMPOSSIBLE!Blue Giant recquired.", 2f,false));
 				return;
 			}
 			InGameManager.IGM.MakeWarpEffect ();

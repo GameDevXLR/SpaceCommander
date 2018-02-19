@@ -56,6 +56,10 @@ public class ScanInterestPoint : MonoBehaviour {
 	{
 		GetComponent<Button> ().enabled = true;
 		GetComponent<AudioSource> ().PlayOneShot (pointLockedSnd);
+		if (!NavigationConsole.instance.hasPlayedDeepScanVoice) 
+		{
+			NavigationConsole.instance.PlayDeepScanVoice ();
+		}
 		isDetected = true;
 		sigInfoObj = Instantiate (SignatureInfoPrefab, NavigationConsole.instance.scanSignaturePanel.transform);
 		NavigationConsole.instance.listOfSignatures.Add (sigInfoObj);

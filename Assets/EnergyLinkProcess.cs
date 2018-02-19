@@ -155,7 +155,9 @@ public class EnergyLinkProcess : MonoBehaviour {
 		case EnergySlotBehaviour.ConsoleName.pilot:
 			EnergyConsole.instance.PilotSlot.ChangeRegenRate (currentLinkPower);
 			break;
-
+		case EnergySlotBehaviour.ConsoleName.shield:
+			EnergyConsole.instance.shieldSlot.ChangeRegenRate (currentLinkPower);
+			break;
 		default:
 			Debug.Log("Le link n'est associé a aucune console!Etonnant!");
 			break;
@@ -189,7 +191,9 @@ public class EnergyLinkProcess : MonoBehaviour {
 		case EnergySlotBehaviour.ConsoleName.pilot:
 			EnergyConsole.instance.PilotSlot.ChangeRegenRate (currentLinkPower);
 			break;
-
+		case EnergySlotBehaviour.ConsoleName.shield:
+			EnergyConsole.instance.shieldSlot.ChangeRegenRate (currentLinkPower);
+			break;
 		default:
 			break;
 		}

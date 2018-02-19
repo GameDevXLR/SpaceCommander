@@ -19,8 +19,6 @@ public class WarpManager : MonoBehaviour {
 	}
 	public void ChangeTheSkybox(int index)
 	{
-		Debug.Log (index.ToString());
-
 		RenderSettings.skybox = skyboxList [index];
 	}
 	public void ChangeTheSkybox()

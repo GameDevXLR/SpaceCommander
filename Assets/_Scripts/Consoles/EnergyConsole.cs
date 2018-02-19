@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class EnergyConsole : MonoBehaviour {
 	public bool isActive = true;
 	public static EnergyConsole instance;
@@ -18,8 +19,9 @@ public class EnergyConsole : MonoBehaviour {
 	public EnergySlotBehaviour shieldSlot;
 	public EnergySlotBehaviour weaponSlot;
 
-
-
+	public cakeslice.Outline energyConsoleOutline;
+	public AudioSource audioS;
+	public AudioClip changeThePowerOutputVoice;
 
 	void Awake()
 	{
@@ -35,6 +37,7 @@ public class EnergyConsole : MonoBehaviour {
 	void Start () {
 		Initialize ();
 		RestartTheTransfo ();
+		energyConsoleOutline.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -66,9 +69,38 @@ public class EnergyConsole : MonoBehaviour {
 		while (isActive) 
 		{
 			stockedEnergy -= transfoEnergyRate;
+			if (stockedEnergy < 0) 
+			{
+				stockedEnergy = 0;
+				if (!InGameManager.IGM.hasLooseTheGame) 
+				{
+					InGameManager.IGM.EndTheGame ();
+				}
+			}
 			stockedEnergyDisplayTxt.text = stockedEnergy.ToString ();
 			yield return new WaitForSecondsRealtime (1f);
 		}
 	}
 
+
+	public bool IsShieldStrongEnough()
+	{
+		if (shieldSlot.regenRate >= 10) 
+		{
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void ActivateTheOutline()
+	{
+		audioS.PlayOneShot (changeThePowerOutputVoice);
+		energyConsoleOutline.enabled = true;
+	}
+
+	public void DeactivateOutline()
+	{
+		energyConsoleOutline.enabled = false;
+	}
 }

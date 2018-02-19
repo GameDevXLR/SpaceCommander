@@ -182,7 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoTxt: {fileID: 114176202478169136}
   startInfo: BG404
-  detailedInfo: Naine Rouge
+  detailedInfo: Blue Giant
+  skyboxIndexForJump: 0
   scanTime: 5
   scanRequiredEnergy: 20
   goodStuffColor: {r: 0, g: 1, b: 0, a: 0.391}

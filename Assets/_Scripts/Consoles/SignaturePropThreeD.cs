@@ -9,7 +9,7 @@ public class SignaturePropThreeD : MonoBehaviour {
 	public Text infoTxt;
 //	Button sigBtn;
 	public string startInfo;
-	public string detailedInfo = "Naine Rouge";
+	public string detailedInfo = "Blue Giant";
 	public int skyboxIndexForJump;
 	public float scanTime= 2f;
 	public int scanRequiredEnergy;
@@ -99,7 +99,7 @@ public class SignaturePropThreeD : MonoBehaviour {
 
 		} else 
 		{
-			StartCoroutine(ShowAlertWindow("pas assez d'energie dans le module de navigation.", false,1.5f));
+			StartCoroutine(ShowAlertWindow("Not enough power.", false,1.5f));
 		}
 	}
 
@@ -111,9 +111,12 @@ public class SignaturePropThreeD : MonoBehaviour {
 		}
 		audioS.PlayOneShot (detailedScanSnd);
 		NavigationConsole.instance.ChangeEnergy(- scanRequiredEnergy);
-		StartCoroutine( ShowAlertWindow ("Analyse détaillée de la signature énergétique en cours...", true, scanTime));
+		StartCoroutine( ShowAlertWindow ("Detailed scan in progress...", true, scanTime));
 		yield return new WaitForSecondsRealtime (scanTime);
-
+		if (!NavigationConsole.instance.hasPlayedTransferCoorVoice) 
+		{
+			NavigationConsole.instance.PlayTransferCoorVoice ();
+		}
 //		sigBtn.interactable = true;
 //		sigBtn.onClick.RemoveAllListeners ();
 //		sigBtn.GetComponent<Image>().color = Color.green;
@@ -140,7 +143,7 @@ public class SignaturePropThreeD : MonoBehaviour {
 
 		} else 
 		{
-			StartCoroutine(ShowAlertWindow("pas assez d'energie dans le module de navigation.",false,1.5f));
+			StartCoroutine(ShowAlertWindow("Not enough power.",false,1.5f));
 		}
 	}
 
@@ -149,9 +152,9 @@ public class SignaturePropThreeD : MonoBehaviour {
 	{
 		NavigationConsole.instance.isTransfering = true;
 		NavigationConsole.instance.ChangeEnergy(- scanRequiredEnergy*4);
-		StartCoroutine(ShowAlertWindow( "Transfert des coordonnées de bond en cours...",true,(scanTime * 10)/NavigationConsole.instance.currentProc));
+		StartCoroutine(ShowAlertWindow( "Transfering jump coordinates...",true,(scanTime * 10)/NavigationConsole.instance.currentProc));
 		yield return new WaitForSecondsRealtime ((scanTime * 10)/NavigationConsole.instance.currentProc);
-		StartCoroutine(ShowAlertWindow( "Destination transmise au module de pilotage.",true,3f));
+		StartCoroutine(ShowAlertWindow( "Data transfer completed.",true,3f));
 		PilotConsole.instance.jumpInfos.SetNewDestination (startInfo, detailedInfo, scanRequiredEnergy * 4, eventCode,skyboxIndexForJump, gameObject);
 		if (giveQuestOne) {
 			giveQuestOne = false;
@@ -185,7 +188,7 @@ public class SignaturePropThreeD : MonoBehaviour {
 	//eventcode 1
 	public void StarEvent()
 	{
-		detailedInfo = "Naine Rouge";
+		detailedInfo = "Blue Giant";
 		scanRequiredEnergy = 20;
 		scanTime = 5;
 		skyboxIndexForJump = 0;
@@ -195,7 +198,7 @@ public class SignaturePropThreeD : MonoBehaviour {
 	//eventcode 2
 	public void BlackHole()
 	{
-		detailedInfo = "Trou noir";
+		detailedInfo = "Black Hole";
 		scanRequiredEnergy = 24;
 		scanTime = 10;
 		skyboxIndexForJump = Random.Range(0,3);
@@ -204,7 +207,7 @@ public class SignaturePropThreeD : MonoBehaviour {
 	//eventcode 3
 	public void AsteroidField()
 	{
-		detailedInfo = "Champs d'asteroides";
+		detailedInfo = "Asteroids Field";
 		scanRequiredEnergy = 10;
 		scanTime = 2;
 		skyboxIndexForJump = Random.Range(4,6);

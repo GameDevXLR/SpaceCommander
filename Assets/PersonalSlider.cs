@@ -25,7 +25,7 @@ public class PersonalSlider : MonoBehaviour {
 		{
 			renderers [i].enabled = false;
 			tmpValue += (sliderMaxValue / 10f);
-			if (tmpValue < sliderValue) 
+			if (tmpValue <= sliderValue) 
 			{
 				renderers [i].enabled = true;
 			}

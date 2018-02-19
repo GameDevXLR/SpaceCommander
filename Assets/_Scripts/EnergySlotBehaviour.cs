@@ -26,6 +26,7 @@ public class EnergySlotBehaviour{
 		name = consoleName;
 		priorityLevel = priority;
 		regenRate = regen;
+//		Debug.Log (regenRate.ToString () + name);
 		ActualizeTheAssociatedConsole ();
 
 	}
