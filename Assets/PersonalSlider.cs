@@ -12,6 +12,8 @@ public class PersonalSlider : MonoBehaviour {
 //	public UnityEvent sliderEvent;
 	public MeshRenderer[] renderers;
 	float tmpValue;
+	public Transform sliderBtn3DObj;
+	public bool got3DBtnObj;
 
 	public void ChangeTheValue(float i)
 	{
@@ -28,6 +30,10 @@ public class PersonalSlider : MonoBehaviour {
 			if (tmpValue <= sliderValue) 
 			{
 				renderers [i].enabled = true;
+			}
+			if (got3DBtnObj && tmpValue == sliderValue) 
+			{
+				sliderBtn3DObj.localPosition = renderers [i].transform.localPosition;
 			}
 			
 		}

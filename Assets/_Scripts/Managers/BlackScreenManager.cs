@@ -74,6 +74,7 @@ public class BlackScreenManager : MonoBehaviour {
 		playerAudioSource.PlayOneShot (premiereTache);
 		CC.enabled = true;
 		CC.gameObject.GetComponent<FirstPersonController> ().enabled = true;
+		typerScript.enabled = false;
 		mainTxt.text =  "Go to the navigation console to select a destination.";
 		typerScript.enabled = true;
 		backScreenImg.CrossFadeAlpha (0, 5f, false);

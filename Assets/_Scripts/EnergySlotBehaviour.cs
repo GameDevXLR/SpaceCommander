@@ -32,6 +32,10 @@ public class EnergySlotBehaviour{
 	}
 	public void ChangeRegenRate(int regenR)
 	{
+		if (name == ConsoleName.shield && EnergyConsole.instance.energyConsoleOutline.isActiveAndEnabled && regenR>=2) 
+		{
+			EnergyConsole.instance.DeactivateOutline ();
+		}
 		ActuGlobalPowerConsumption (regenRate, regenR);
 		regenRate = regenR;
 		ActualizeTheAssociatedConsole ();

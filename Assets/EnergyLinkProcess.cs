@@ -28,7 +28,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 		{
 			if(!Input.GetMouseButton(0))
 			{
-				EnergyConsole.instance.isCreatingLink = false;
+				EnergyConsole.instance.StopLinkCreation();
 				if (!desiredLinkComplete) 
 				{
 					ReinitializeTrail ();
@@ -72,7 +72,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 		StartNewLinkCreation ();
 		isBeingDrag = true;
 		EnergyConsole.instance.EnergyLP = this;
-		EnergyConsole.instance.isCreatingLink = true;
+		EnergyConsole.instance.StartMakingLink();
 		TrailObj.GetComponent<TrailRenderer> ().enabled = true;
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
@@ -90,7 +90,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 
 			//si le joueur lache
 			if (!Input.GetMouseButton (0)) {
-				EnergyConsole.instance.isCreatingLink = false;
+				EnergyConsole.instance.StopLinkCreation();
 				if (!desiredLinkComplete) {
 					relaysLine.positionCount = 1;
 					ReinitializeTrail ();
@@ -170,7 +170,7 @@ public class EnergyLinkProcess : MonoBehaviour {
 	{
 		ReinitializeTrail ();
 		isBeingDrag = false;
-		EnergyConsole.instance.isCreatingLink = false;
+		EnergyConsole.instance.StopLinkCreation();
 		desiredLinkComplete = true;
 		AddANewPoint (endPos);
 		foreach (EnergyRelayPoint item in relays) 

@@ -20,9 +20,10 @@ public class EnergyConsole : MonoBehaviour {
 	public EnergySlotBehaviour weaponSlot;
 
 	public cakeslice.Outline energyConsoleOutline;
+	public cakeslice.Outline[] relaysOutline;
 	public AudioSource audioS;
 	public AudioClip changeThePowerOutputVoice;
-
+	public AudioClip shieldStrongVoice;
 	void Awake()
 	{
 		if (instance != null) {
@@ -45,9 +46,12 @@ public class EnergyConsole : MonoBehaviour {
 		
 	}
 
+
+
 	//créer ici les différents "energySlot" pour une gestion plus simple et que ce soit plus clair a extend.
 	public void Initialize()
 	{
+		StopLinkCreation ();
 		NavSlot = new EnergySlotBehaviour ();
 		NavSlot.EnergySlotConfig (EnergySlotBehaviour.ConsoleName.navigation, 1, 3);
 		PilotSlot = new EnergySlotBehaviour ();
@@ -82,10 +86,27 @@ public class EnergyConsole : MonoBehaviour {
 		}
 	}
 
+	public void StartMakingLink()
+	{
+		isCreatingLink = true;
+		foreach (cakeslice.Outline l in relaysOutline) 
+		{
+			l.enabled = true;
+		}
+	}
+
+	public void StopLinkCreation()
+	{
+		isCreatingLink = false;
+		foreach (cakeslice.Outline l in relaysOutline) 
+		{
+			l.enabled = false;
+		}
+	}
 
 	public bool IsShieldStrongEnough()
 	{
-		if (shieldSlot.regenRate >= 10) 
+		if (shieldSlot.regenRate >= 2) 
 		{
 			return true;
 		} else {
@@ -101,6 +122,7 @@ public class EnergyConsole : MonoBehaviour {
 
 	public void DeactivateOutline()
 	{
+		audioS.PlayOneShot (shieldStrongVoice);
 		energyConsoleOutline.enabled = false;
 	}
 }

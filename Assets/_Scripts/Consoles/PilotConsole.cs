@@ -33,7 +33,7 @@ public class PilotConsole : MonoBehaviour {
 	public bool hyperdriveActive = true;
 	public bool coolingactive = true;
 
-	public Button reloadInStarBtn;
+	public GameObject reloadInStarBtn;
 	public Button hyperdriveActivationBtn;
 	public Color turnedOffColor;
 	public Color turnedOnColor;
@@ -73,6 +73,9 @@ public class PilotConsole : MonoBehaviour {
 	public AudioClip loadHyperdriveVoice;
 	public bool hasPlayedLoadHyperVoice;
 
+	public MeshRenderer[] hyperdriveLoadMeshR;
+	public Material isLoadedMat;
+	public Material isNotLoadedMat;
 
 	void Awake()
 	{
@@ -96,7 +99,7 @@ public class PilotConsole : MonoBehaviour {
 	public void YouAreNearAStart()
 	{
 		isNearAStar = true;
-		reloadInStarBtn.interactable = true;
+		reloadInStarBtn.SetActive( true);
 	}
 
 
@@ -105,9 +108,11 @@ public class PilotConsole : MonoBehaviour {
 	{
 		if (isNearAStar) {
 			shipPath.enabled = true;
-			reloadInStarBtn.interactable = false;
+			reloadInStarBtn.SetActive( false);
 			GetComponent<AudioSource> ().clip = actionMusic;
 			GetComponent<AudioSource> ().Play ();
+			EnergyConsole.instance.ActivateTheOutline ();
+			isNearAStar = false;
 			//ajouter ici le lancement des evenements liés a l'étoile.
 		}
 	}
@@ -128,6 +133,8 @@ public class PilotConsole : MonoBehaviour {
 					if (hyperdriveFull && hyperdriveBattery != hyperdriveBatterySlider.maxValue) 
 					{
 						hyperdriveFull = false;
+						hyperdriveLoadMeshR[0].material = isNotLoadedMat;
+						hyperdriveLoadMeshR[1].material = isNotLoadedMat;
 					}
 					hyperdriveBattery += hyperdriveBatteryRegen;
 					if (hyperdriveBattery > hyperdriveBatterySlider.maxValue) {
@@ -140,6 +147,9 @@ public class PilotConsole : MonoBehaviour {
 							QuestManager.QM.QuestFirstJumpStep2 ();
 						}
 						hyperdriveFull = true;
+						hyperdriveLoadMeshR[0].material = isLoadedMat;
+						hyperdriveLoadMeshR[1].material = isLoadedMat;
+
 						StartCoroutine(ShowAlertWindow("Hyperdrive fully loaded.",1f, true));
 					}
 					hyperdriveBatterySlider.value = hyperdriveBattery;
@@ -274,6 +284,11 @@ public class PilotConsole : MonoBehaviour {
 	}
 	public void ChangeHyperdriveBatteryRegen(float newRegen)
 	{
+		if (!hyperdriveActive) 
+		{
+			RestartHyperdrive ();
+			return;
+		}
 		if (!alreadyOpened) 
 		{
 			alreadyOpened = true;

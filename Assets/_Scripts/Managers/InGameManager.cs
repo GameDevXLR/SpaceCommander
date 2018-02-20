@@ -175,7 +175,7 @@ public class InGameManager : MonoBehaviour {
 		mainTextDisplayer.enabled = true;
 		mainTextDisplayer.GetComponent<TextTyper> ().enabled = true;
 
-		yield return new WaitForSecondsRealtime (3f);
+		yield return new WaitForSecondsRealtime (8f);
 		SceneManager.LoadScene (0);
 	}
 }
