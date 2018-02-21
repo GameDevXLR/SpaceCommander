@@ -116,13 +116,12 @@ public class EnergyConsole : MonoBehaviour {
 
 	public void ActivateTheOutline()
 	{
-		audioS.PlayOneShot (changeThePowerOutputVoice);
 		energyConsoleOutline.enabled = true;
 	}
 
 	public void DeactivateOutline()
 	{
-		audioS.PlayOneShot (shieldStrongVoice);
+		audioS.PlayOneShot (changeThePowerOutputVoice);
 		energyConsoleOutline.enabled = false;
 	}
 }

@@ -17,6 +17,8 @@ public class BlackScreenManager : MonoBehaviour {
 	public AudioClip avenirHuma;
 //	public AudioClip UTGTransmission;
 	public AudioClip reserveFaible;
+	public AudioClip firstMissionVoice;
+
 	public AudioClip premiereTache;
 	public TextTyper typerScript;
 
@@ -64,10 +66,15 @@ public class BlackScreenManager : MonoBehaviour {
 
 			yield return new WaitForSecondsRealtime (5f);
 			typerScript.enabled = false;
-			mainTxt.text = "Our power reserves are very low...Your first mission is to find a Blue Giant in which we could refuel.";
+			mainTxt.text = "Our power reserves are very low...";
 			typerScript.enabled = true;
 			playerAudioSource.PlayOneShot (reserveFaible);
-			yield return new WaitForSecondsRealtime (7f);
+			yield return new WaitForSecondsRealtime (3f);
+			typerScript.enabled = false;
+			mainTxt.text = "Your first mission is to find a Blue Giant in which we could refuel.";
+			typerScript.enabled = true;
+			playerAudioSource.PlayOneShot (firstMissionVoice);
+			yield return new WaitForSecondsRealtime (4f);
 			typerScript.enabled = false;
 		}
 		isPlayingIntro = false;

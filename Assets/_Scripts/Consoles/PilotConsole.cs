@@ -74,6 +74,8 @@ public class PilotConsole : MonoBehaviour {
 	public bool hasPlayedLoadHyperVoice;
 
 	public MeshRenderer[] hyperdriveLoadMeshR;
+	public ParticleSystem[] hyperdriveLoadParticles;
+	public ParticleSystem[] enginesLoadParticles;
 	public Material isLoadedMat;
 	public Material isNotLoadedMat;
 
@@ -109,10 +111,9 @@ public class PilotConsole : MonoBehaviour {
 		if (isNearAStar) {
 			shipPath.enabled = true;
 			reloadInStarBtn.SetActive( false);
-			GetComponent<AudioSource> ().clip = actionMusic;
-			GetComponent<AudioSource> ().Play ();
+			InGameManager.IGM.GetComponent<AudioSource> ().clip = actionMusic;
+			InGameManager.IGM.GetComponent<AudioSource> ().Play ();
 			EnergyConsole.instance.ActivateTheOutline ();
-			isNearAStar = false;
 			//ajouter ici le lancement des evenements liés a l'étoile.
 		}
 	}
@@ -137,6 +138,9 @@ public class PilotConsole : MonoBehaviour {
 						hyperdriveLoadMeshR[1].material = isNotLoadedMat;
 					}
 					hyperdriveBattery += hyperdriveBatteryRegen;
+					hyperdriveLoadParticles [0].Emit (hyperdriveBatteryRegen);
+					hyperdriveLoadParticles [1].Emit (hyperdriveBatteryRegen);
+
 					if (hyperdriveBattery > hyperdriveBatterySlider.maxValue) {
 						hyperdriveBattery = (int)hyperdriveBatterySlider.maxValue;
 					}
@@ -156,6 +160,8 @@ public class PilotConsole : MonoBehaviour {
 				}
 				if (moteurActive) {
 					moteurBattery += moteurBatteryRegen;
+					enginesLoadParticles [0].Emit (moteurBatteryRegen);
+					enginesLoadParticles [1].Emit (moteurBatteryRegen);
 					if (moteurBattery > moteurBatterySlider.maxValue) {
 						moteurBattery = (int)moteurBatterySlider.maxValue;
 					}

@@ -18,6 +18,7 @@ public class InGameManager : MonoBehaviour {
 	public GameObject starForRefuelObj;
 	public PostProcessingProfile PPP;
 	public Text mainTextDisplayer;
+	public GameObject quitGameMenu;
 
 //	public AudioClip youLooseVoice;
 //	public AudioSource effectsAudioS;
@@ -44,6 +45,23 @@ public class InGameManager : MonoBehaviour {
 		ConfigureThePPP ();
 //		MakeEndOfWarpEffect (); //pour test...
 //		ActivateStarEvent ();
+	}
+	void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			ShowHideMenu ();
+		}
+	}
+
+	public void QuitTheGame()
+	{
+		Application.Quit();
+	}
+	public void ShowHideMenu()
+	{
+		quitGameMenu.SetActive (!quitGameMenu.activeInHierarchy);
+
 	}
 
 	public void ActivateTheQuestPanel()
@@ -73,6 +91,10 @@ public class InGameManager : MonoBehaviour {
 
 	IEnumerator WarpEffectProcedure ()
 	{
+		if (PilotConsole.instance.isNearAStar) 
+		{
+			DeactivateStarEvent ();
+		}
 		isJumping = true;
 		yield return new WaitForEndOfFrame ();
 		StartCoroutine (PPPProcedure());
@@ -92,6 +114,14 @@ public class InGameManager : MonoBehaviour {
 		//définir ici ce qu'il se passe quand on arrive dans un systeme ou ya une étoile...
 		starForRefuelObj.SetActive(true); //active l'étoile (son visuel) : a optimiser / rendre plus random etc...
 		PilotConsole.instance.YouAreNearAStart(); //dire a la console qu'on est proche d'une étoile...
+	}
+
+	public void DeactivateStarEvent()
+	{
+		starForRefuelObj.SetActive(false);
+		spaceShip.GetComponent<ShipRefuelInStarPath> ().enabled = false;
+		PilotConsole.instance.isNearAStar = false;
+
 	}
 
 	IEnumerator PPPProcedure ()
@@ -178,4 +208,5 @@ public class InGameManager : MonoBehaviour {
 		yield return new WaitForSecondsRealtime (8f);
 		SceneManager.LoadScene (0);
 	}
+
 }
